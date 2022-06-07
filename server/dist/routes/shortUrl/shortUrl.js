@@ -10,8 +10,10 @@ const router = express_1.default.Router();
 // data model import
 // const BucketListItem = require("../../models/BucketListItem");
 const controller_1 = __importDefault(require("./controller")); //need to add extension js, other wise will cause the error
-// // build:save()
+// creat short url
 router.post("/", controller_1.default.createUrl);
+// redirect url
+router.get("/:shortId", controller_1.default.redirectUrl);
 // // // update:findByIdAndUpdate()
 // router.put("/:id", BucketListItemController.updatePost);
 // // // delete the post:findByIdAndDelete()

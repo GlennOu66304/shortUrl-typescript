@@ -12,38 +12,15 @@ export default {
     return res.send(shhortUrl);
   },
 
-  //   try {
-  //     //   use the mongoose save method to save the item into the database
-  //     // model save
-  //     const bucketListItem = await newBucketListItem.save();
-
-  //     // condition check
-  //     if (!bucketListItem)
-  //       throw new Error("Something went wrong saving the bucketListItem");
-
-  //     //   send back the data to the console
-  //     res.status(200).json(bucketListItem);
-  //   } catch (error) {
-  //     res.status(500).json({ message: error.message });
-  //   }
-  // },
-
-  // updatePost: async (req, res, next) => {
-  //   const { id } = req.params;
-
-  //   try {
-  //     const response = await bucketListItemModel.findByIdAndUpdate(
-  //       id,
-  //       req.body
-  //     );
-
-  //     if (!response) throw Error("Something went wrong");
-
-  //     const updated = { ...response._doc, ...req.body };
-
-  //     res.status(200).json(updated);
-  //   } catch (error) {
-  //     res.status(500).json({ message: error.message });
-  //   }
-  // },
+  redirectUrl: async (req: Request, res: Response) => {
+    // ge the shortId
+    const { shortId } = req.params;
+    // check in the database
+    const short = await shortUrl.findOne({ shortId }).lean();
+    // yes, then get the longUrl
+    if (!short) {
+      return res.status(403);
+    }
+    return res.redirect(short.longUrl);
+  },
 };

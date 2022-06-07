@@ -15,6 +15,7 @@ const shortUrlSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  
 
   shortId: {
     type: String,

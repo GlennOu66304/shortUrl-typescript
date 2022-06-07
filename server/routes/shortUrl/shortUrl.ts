@@ -8,9 +8,11 @@ const router = express.Router();
 // const BucketListItem = require("../../models/BucketListItem");
 import ShortUrlController from "./controller"; //need to add extension js, other wise will cause the error
 
-// // build:save()
+// creat short url
 router.post("/", ShortUrlController.createUrl);
 
+// redirect url
+router.get("/:shortId", ShortUrlController.redirectUrl);
 // // // update:findByIdAndUpdate()
 // router.put("/:id", BucketListItemController.updatePost);
 
