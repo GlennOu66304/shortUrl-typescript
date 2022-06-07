@@ -1,5 +1,15 @@
 ## Goal
 
+1.validation check
+
+2.analysis useage model
+
+3,docker file the file
+
+
+
+## ## typescript development setup
+
 1.init the prokect
 
 2.install the typescript enviroment
