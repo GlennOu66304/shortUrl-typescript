@@ -50,35 +50,35 @@ https://blog.logrocket.com/how-to-set-up-node-typescript-express/)
 
 
 
+## Resource
 
-
-MERN Typescripe
+**MERN Typescripe**
 
 1.typescript in Backend express
 2.typescript in Front end react
 3.Redux toolkit
 
-Build and Deploy a React Cryptocurrency App and Master Redux Toolkit in One Video
+ **Build and Deploy a React Cryptocurrency App and Master Redux Toolkit in One Video**
 
 https://youtu.be/9DDX3US3kss
 
 Rest api: url shorter
 
-Build a RESTful API with Node.js, Express & TypeScript
+**Build a RESTful API with Node.js, Express & TypeScript**
 
 https://youtu.be/goUbHgAzPCs
 
-Part 1: Backend - Build a URL Shortener with Node.js, React, TypeScript & MongoDB
+**Part 1: Backend - Build a URL Shortener with Node.js, React, TypeScript & MongoDB**
 
 https://youtu.be/T4HskUllZzY
 
-Graph Ql: Reddit , hotel project
+**Graph Ql: Reddit , hotel project**
 
-Full MERN Website React Nodejs w/ GraphQL Tailwind and Docker From Zero To Deployment + GIVEAWAY
+**Full MERN Website React Nodejs w/ GraphQL Tailwind and Docker From Zero To Deployment + GIVEAWAY**
 
 https://youtu.be/4ELH8CT4J0A
 
-Fullstack React GraphQL TypeScript Tutorial(reddit)
+**Fullstack React GraphQL TypeScript Tutorial(reddit)**
 
 https://youtu.be/I6ypD7qv3Z8
 
@@ -86,13 +86,7 @@ https://youtu.be/I6ypD7qv3Z8
 
 
 
-1.git push the repo done
 
-2.mern typescript
-
-3.ticket push to the github done
-
-4.ticeket project learning done
 
 
 
