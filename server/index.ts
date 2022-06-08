@@ -5,10 +5,10 @@ import bodyParser from "body-parser";
 import shortUrlRouter from "./routes/shortUrl/shortUrl";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-
+import cors from "cors";
 const app: Express = express();
 app.use(bodyParser.json());
-
+app.use(cors())
 // connect the mongodb database
 dotenv.config();
 const url = process.env.MONGO_URI as string;
@@ -32,7 +32,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // routes area
-app.use("/api/shorturl", shortUrlRouter); //api routes
+app.use("/", shortUrlRouter); //api routes
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
