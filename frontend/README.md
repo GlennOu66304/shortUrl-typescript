@@ -2,6 +2,24 @@
 
 
 
+
+
+click the generate then go to ta new page, 
+
+this page has the input generate section and short url display
+
+1.react-router-dom
+
+2.new component
+
+
+
+Home router
+
+result router
+
+same like meituan, vue-shop
+
 ## Goal
 
 1.backgrond image make
@@ -19,6 +37,12 @@
 3.2 axios send the request to the back end
 
 4.resize change the backgrond color
+
+4.1.add the background image
+
+4.2 useEffect change the image and backgroung color
+
+
 
 ## enviroment
 
