@@ -8,7 +8,7 @@
 
 
 
-## ## typescript development setup
+##  typescript development setup
 
 1.init the prokect
 
@@ -16,7 +16,7 @@
 
 just add some tyscript file under the server folder
 
-[[tsconfig.json: Build:No inputs were found in config file](https://stackoverflow.com/questions/41211566/tsconfig-json-buildno-inputs-were-found-in-config-file)]
+[tsconfig.json: Build:No inputs were found in config file](https://stackoverflow.com/questions/41211566/tsconfig-json-buildno-inputs-were-found-in-config-file)
 
 ## npm run dev
 
@@ -36,7 +36,7 @@ Only change the files in the scripts section, if the npm run dev has error
 
 6.controller
 
-https://blog.logrocket.com/how-to-set-up-node-typescript-express/)
+https://blog.logrocket.com/how-to-set-up-node-typescript-express/
 
 ## Reference
 
