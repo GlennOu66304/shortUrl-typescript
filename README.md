@@ -1,5 +1,16 @@
 
 
+## dot env can only been used in the node express side, do not use it in client side, inlude react, nextjs, vue
+
+
+
+For react webpack file, you can use the dotenv-webpack  instead
+
+[Module not found: Error: Can't resolve 'fs' in dotenv/lib](https://stackoverflow.com/questions/70855580/module-not-found-error-cant-resolve-fs-in-dotenv-lib)
+
+[As mentioned above, `dotenv` is really only intended for the server.](https://github.com/motdotla/dotenv/issues/233)
+
+[Module not found: Can't resolve 'fs' in 'node_modules\dotenv\lib' - Nextjs](https://stackoverflow.com/questions/71109369/module-not-found-cant-resolve-fs-in-node-modules-dotenv-lib-nextjs)
 
 ## Goal
 

@@ -6,16 +6,18 @@ import React, { useState } from "react";
 import styles from "./form.module.css";
 import axios from "axios";
 export default function Form() {
+  console.log(process.env.REACT_APP_API)
+  // let server: string = process.env.REACT_APP_API;
   const [longUrl, setLongUrl] = useState("");
   const [shortId, setShortId] = useState("");
-  const server = "http://localhost:8089";
+  // const server = "http://localhost:8089";
   const handleChange = (event: any) => setLongUrl(event.target.value);
   // console.log(longUrl);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const result = await axios.post(`${server}`, {
+      const result = await axios.post(`${process.env.REACT_APP_API}`, {
         longUrl,
       });
       // console.log(result.data);
@@ -40,8 +42,8 @@ export default function Form() {
       </form>
       {/* only show the short url when there is a short id */}
       {shortId && (
-        <a href={`${server}/${shortId}`}>
-          {server}/{shortId ? shortId : ""}
+        <a href={`${process.env.REACT_APP_API}/${shortId}`}>
+          {process.env.REACT_APP_API}/{shortId ? shortId : ""}
         </a>
       )}
     </Box>
