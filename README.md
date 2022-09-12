@@ -1,3 +1,6 @@
+
+
+
 ## Goal
 
 1.validation check
@@ -6,7 +9,8 @@
 
 3,docker file the file
 
-
+## Api
+[shorturl-api-typescript](https://github.com/GlennOu66304/shorturl-api-typescript)  
 
 ##  typescript development setup
 
