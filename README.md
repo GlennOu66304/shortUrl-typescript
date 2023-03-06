@@ -2,7 +2,7 @@
 
 ## dot env can only been used in the node express side, do not use it in client side, inlude react, nextjs, vue
 
-1111
+2222
 
 For react webpack file, you can use the dotenv-webpack  instead
 
