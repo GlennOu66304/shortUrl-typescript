@@ -6,22 +6,28 @@ import React, { useState } from "react";
 import styles from "./form.module.css";
 import axios from "axios";
 export default function Form() {
-  console.log(process.env.REACT_APP_API);
+  // console.log(process.env.REACT_APP_API);
   // let server: string = process.env.REACT_APP_API;
   const [longUrl, setLongUrl] = useState("");
   const [shortId, setShortId] = useState("");
-  // const server = "http://localhost:8089";
+  const [shortenButton, setShortenButton] = useState("Shorten");
+
   const handleChange = (event: any) => setLongUrl(event.target.value);
-  // console.log(longUrl);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const result = await axios.post(`${process.env.REACT_APP_API}`, {
-        longUrl,
-      });
-      // console.log(result.data);
-      setShortId(result.data.shortId);
+      console.log(longUrl)
+      if (longUrl != null && "") {
+        const result = await axios.post(`${process.env.REACT_APP_API}`, {
+          longUrl,
+        });
+  
+        // console.log(result.data);
+        setShortId(result.data.shortId);
+        setShortenButton("ClearUrl ");
+      }
+
       return;
     } catch (err) {
       console.log(err);
@@ -40,20 +46,20 @@ export default function Form() {
             <Input
               value={longUrl}
               onChange={handleChange}
-              placeholder="Shotern your link"
+              placeholder="put your link here"
               size="lg"
               className={styles["chakra-input css-6p9lc8"]}
               width="500px"
             />
             <Button type="submit" colorScheme={"blue"}>
-              Shorten
+              {shortenButton}
             </Button>
           </HStack>
         </form>
       </Box>
       {/* only show the short url when there is a short id */}
       {shortId && (
-        <Box  height="42px" bg="white" borderRadius="md" m="3">
+        <Box height="42px" bg="white" borderRadius="md" m="3">
           <HStack spacing={1}>
             <Text textDecoration="underline" width="500px">
               <a href={`${process.env.REACT_APP_API}/${shortId}`}>
