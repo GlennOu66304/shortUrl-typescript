@@ -1,37 +1,58 @@
 // import { useFormik } from "formik";
 // 1.inout build, post request use, debugger
-import { HStack, Box, Input, Button, Flex, Text } from "@chakra-ui/react";
+import {
+  HStack,
+  Box,
+  Input,
+  Button,
+  Flex,
+  Text,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
 // import { StarIcon } from "@chakra-ui/icons";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./form.module.css";
 import axios from "axios";
+
 export default function Form() {
   // console.log(process.env.REACT_APP_API);
   // let server: string = process.env.REACT_APP_API;
   const [longUrl, setLongUrl] = useState("");
   const [shortId, setShortId] = useState("");
-  const [shortenButton, setShortenButton] = useState("Shorten");
+  const [shortenButton, setShortenButton] = useState("ShortenLink");
+  const textRef = useRef(null);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleChange = (event: any) => setLongUrl(event.target.value);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      console.log(longUrl)
-      if (longUrl != null && "") {
+      if (shortenButton === "Clear") {
+        setLongUrl("");
+      }
+      if (longUrl != null || "") {
         const result = await axios.post(`${process.env.REACT_APP_API}`, {
           longUrl,
         });
-  
+
         // console.log(result.data);
         setShortId(result.data.shortId);
-        setShortenButton("ClearUrl ");
+        setShortenButton("Clear");
       }
 
       return;
     } catch (err) {
       console.log(err);
     }
+  };
+  const handleClickCopy = () => {
+    const textCopy = textRef.current.innerText;
+    navigator.clipboard.writeText(textCopy);
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 500);
   };
   return (
     <div>
@@ -40,6 +61,12 @@ export default function Form() {
           Generate a short URL
         </Text>
       </Flex>
+      {/* alert the message */}
+      {showAlert && (
+        <Alert status="success">
+          <AlertIcon /> copied successfully! 
+        </Alert>
+      )}
       <Box m="3">
         <form onSubmit={handleSubmit}>
           <HStack spacing={4}>
@@ -61,13 +88,17 @@ export default function Form() {
       {shortId && (
         <Box height="42px" bg="white" borderRadius="md" m="3">
           <HStack spacing={1}>
-            <Text textDecoration="underline" width="500px">
+            <Text ref={textRef} textDecoration="underline" width="500px">
               <a href={`${process.env.REACT_APP_API}/${shortId}`}>
                 {process.env.REACT_APP_API}/{shortId ? shortId : ""}
               </a>
             </Text>
-            <Button type="submit" colorScheme={"green"}>
-              shorted link
+            <Button
+              onClick={handleClickCopy}
+              type="submit"
+              colorScheme={"green"}
+            >
+              COPY
             </Button>
           </HStack>
         </Box>
