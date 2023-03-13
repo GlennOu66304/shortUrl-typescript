@@ -1,5 +1,27 @@
-/* .chakra-input .css-6p9lc8 {
-  margin-left: 400px;
-  margin-top: 200px;
-  width: 537px;
-} */
+.home {
+  text-align: center;
+  /* background-color: black; */
+}
+.header {
+  margin-top: 20px;
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  /* background-color:blue; */
+}
+.block {
+  margin-bottom: 15px;
+}
+#generate {
+  font-weight: bald;
+}
+#edit {
+  text-decoration: underline;
+}
+.form {
+  margin-top: 0px;
+  padding-top: 5px;
+}
+.qr{
+  margin-top: 70px;
+}

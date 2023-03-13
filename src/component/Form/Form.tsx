@@ -5,19 +5,17 @@ import {
   Box,
   Input,
   Button,
-  Flex,
   Text,
   Alert,
   AlertIcon,
 } from "@chakra-ui/react";
 // import { StarIcon } from "@chakra-ui/icons";
 import React, { useState, useRef } from "react";
+
 import styles from "./Form.module.css";
 import axios from "axios";
 
-export default function Form() {
-  // console.log(process.env.REACT_APP_API);
-  // let server: string = process.env.REACT_APP_API;
+export const Form: React.FC = () => {
   const [longUrl, setLongUrl] = useState("");
   const [shortId, setShortId] = useState("");
   const [shortenButton, setShortenButton] = useState("ShortenLink");
@@ -36,7 +34,6 @@ export default function Form() {
           longUrl,
         });
 
-        // console.log(result.data);
         setShortId(result.data.shortId);
         setShortenButton("Clear");
       }
@@ -54,16 +51,9 @@ export default function Form() {
       setShowAlert(false);
     }, 500);
   };
+
   return (
     <div>
-      <Flex align="center" justify="center" height="200px">
-        <Text fontSize="2xl" textAlign="right" fontWeight="bold" mb="auto">
-          Generate a short URL
-        </Text>
-        <Text fontSize="2xl" textAlign="right" fontWeight="bold" mb="auto">
-          Go to Long URL Edit Page
-        </Text>
-      </Flex>
       {/* alert the message */}
       {showAlert && (
         <Alert status="success">
@@ -79,7 +69,7 @@ export default function Form() {
               placeholder="put your link here"
               size="lg"
               className={styles["chakra-input css-6p9lc8"]}
-              width="500px"
+              width="600px"
             />
             <Button type="submit" colorScheme={"blue"}>
               {shortenButton}
@@ -116,4 +106,4 @@ export default function Form() {
       )}
     </div>
   );
-}
+};
