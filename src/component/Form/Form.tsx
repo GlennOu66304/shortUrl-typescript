@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 // import { StarIcon } from "@chakra-ui/icons";
 import React, { useState, useRef } from "react";
-import styles from "./form.module.css";
+import styles from "./Form.module.css";
 import axios from "axios";
 
 export default function Form() {
@@ -60,11 +60,14 @@ export default function Form() {
         <Text fontSize="2xl" textAlign="right" fontWeight="bold" mb="auto">
           Generate a short URL
         </Text>
+        <Text fontSize="2xl" textAlign="right" fontWeight="bold" mb="auto">
+          Go to Long URL Edit Page
+        </Text>
       </Flex>
       {/* alert the message */}
       {showAlert && (
         <Alert status="success">
-          <AlertIcon /> copied successfully! 
+          <AlertIcon /> copied successfully!
         </Alert>
       )}
       <Box m="3">
@@ -99,6 +102,14 @@ export default function Form() {
               colorScheme={"green"}
             >
               COPY
+            </Button>
+            {/* qr code generator button */}
+            <Button
+              onClick={handleClickCopy}
+              type="submit"
+              colorScheme={"green"}
+            >
+              QR Code
             </Button>
           </HStack>
         </Box>
