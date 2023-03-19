@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./homePage.module.css";
 import { Center } from "@chakra-ui/react";
-import { Form, Qr } from "../../component";
+import { Form } from "../../component";
 import { useNavigate } from "react-router-dom";
 // console.log(styles);
 export const HomePage: React.FC = () => {
@@ -31,11 +31,6 @@ export const HomePage: React.FC = () => {
         </Center>
       </div>
 
-      <div className={styles["qr"]}>
-        <Center h="30vh" justifyContent="center">
-          <Qr />
-        </Center>
-      </div>
     </div>
   );
 };

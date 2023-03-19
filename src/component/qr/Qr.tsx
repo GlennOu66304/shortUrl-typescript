@@ -4,7 +4,10 @@ import QRCode from "react-qr-code";
 import { Button } from "@chakra-ui/react";
 // import canvas from "canvas";
 const btoa = window.btoa;
-export const Qr: React.FC = () => {
+interface QrProps {
+  shortID2: string;
+}
+export const Qr: React.FC<QrProps> = ({ shortID2 }) => {
   const svgRef = useRef(null);
   const downloadQr = (svg) => {
     const canvas = document.createElement("canvas");
@@ -18,7 +21,7 @@ export const Qr: React.FC = () => {
       ctx.drawImage(img, 0, 0);
 
       const a = document.createElement("a");
-      a.download = "my-image.png";
+      a.download = shortID2 + ".png";
       a.href = canvas.toDataURL("image/png");
       document.body.appendChild(a);
       a.click();
@@ -27,6 +30,7 @@ export const Qr: React.FC = () => {
 
     img.src = "data:image/svg+xml;base64," + btoa(svgData);
   };
+  const url = process.env.REACT_APP_API;
   return (
     <div className="Qr">
       <div className={styles["qrcode"]}>
@@ -34,8 +38,7 @@ export const Qr: React.FC = () => {
           ref={svgRef}
           size={256}
           style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-          // value={value}
-          value="Jessi"
+          value={url + "/" + shortID2}
           viewBox={`0 0 256 256`}
         />
       </div>

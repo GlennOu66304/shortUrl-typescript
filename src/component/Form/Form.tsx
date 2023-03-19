@@ -9,12 +9,14 @@ import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
+import { Qr } from "../../component";
 // import { StarIcon } from "@chakra-ui/icons";
 import React, { useState, useRef } from "react";
 
 import styles from "./Form.module.css";
 import axios from "axios";
-
+// import { Qr } from "../../component";
 export const Form: React.FC = () => {
   const [longUrl, setLongUrl] = useState("");
   const [shortId, setShortId] = useState("");
@@ -104,6 +106,12 @@ export const Form: React.FC = () => {
           </HStack>
         </Box>
       )}
+
+      <div className={styles["qr"]}>
+        <Center h="30vh" justifyContent="center">
+          <Qr shortID2={shortId} />
+        </Center>
+      </div>
     </div>
   );
 };
