@@ -106,12 +106,13 @@ export const Form: React.FC = () => {
           </HStack>
         </Box>
       )}
-
-      <div className={styles["qr"]}>
-        <Center h="30vh" justifyContent="center">
-          <Qr shortID2={shortId} />
-        </Center>
-      </div>
+      {shortId && (
+        <div className={styles["qr"]}>
+          <Center h="30vh" justifyContent="center">
+            <Qr shortID2={shortId} />
+          </Center>
+        </div>
+      )}
     </div>
   );
 };
