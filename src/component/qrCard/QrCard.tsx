@@ -1,14 +1,14 @@
 import React from "react";
 // import styles from "./QrCard.module.css";
 // put the  details and edit in a row
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex, Box, Stack, Button } from "@chakra-ui/react";
 export const QrCard: React.FC = () => {
   return (
     <div className="QrCard">
       {/* qr code details */}
       <Flex>
         <Box flex="1" className="details">
-          <p>qr code1</p>
+          <p>Name:</p>
           <p>long url:</p>
           <p>short url:</p>
         </Box>
@@ -23,8 +23,10 @@ export const QrCard: React.FC = () => {
         </Box>
 
         <Box flex="1" className="edit">
-          <button>edit</button>
-          <button>delete</button>
+          <Stack direction="row" spacing={2}>
+            <Button colorScheme="blue">edit</Button>
+            <Button colorScheme="blue">delete</Button>
+          </Stack>
         </Box>
       </Flex>
     </div>
