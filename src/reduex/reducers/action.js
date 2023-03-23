@@ -5,3 +5,8 @@ export const fetchAsyncData = createAsyncThunk('data/fetchAsyncData', async () =
     return response.data
   })
   
+  export const removeShortUrl = createAsyncThunk('data/removeShortUrl', async () => {
+    const response = await axios.delete(`${process.env.REACT_APP_API}/api/edit/`)
+    return response.data
+  })
+  

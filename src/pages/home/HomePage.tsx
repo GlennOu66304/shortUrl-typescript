@@ -3,10 +3,14 @@ import styles from "./homePage.module.css";
 import { Center } from "@chakra-ui/react";
 import { Form } from "../../component";
 import { useNavigate } from "react-router-dom";
+import { fetchAsyncData } from "../../reduex/reducers/action.js";
+import { useDispatch } from "react-redux";
 // console.log(styles);
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleClickEdit = () => {
+    dispatch(fetchAsyncData());
     navigate("/edit");
   };
   return (
@@ -30,7 +34,6 @@ export const HomePage: React.FC = () => {
           <Form />
         </Center>
       </div>
-
     </div>
   );
 };

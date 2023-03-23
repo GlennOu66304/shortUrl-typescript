@@ -3,13 +3,20 @@ import styles from "./QrCard.module.css";
 
 // put the  details and edit in a row
 import { Flex, Box, Stack, Button } from "@chakra-ui/react";
+import { removeShortUrl } from "../../reduex/reducers/action.js";
+import { useDispatch, useSelector } from "react-redux";
 interface itemProps {
   name2: string;
-
 }
 
-export const QrCard: React.FC <itemProps >= ({name2}) => {
+export const QrCard: React.FC<itemProps> = ({ name2 }) => {
   // console.log(item2);
+  const dispatch = useDispatch();
+  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log(name2);
+    dispatch(removeShortUrl(name2));
+  };
+
   return (
     <div className={styles["Card"]}>
       {/* qr code details */}
@@ -17,7 +24,10 @@ export const QrCard: React.FC <itemProps >= ({name2}) => {
         <Box flex="1" className="details">
           <p>Name:{name2}</p>
           {/* <p>long url:{longurl2}</p> */}
-          <p>short url:{`${process.env.REACT_APP_API}/`}{name2}</p>
+          <p>
+            short url:{`${process.env.REACT_APP_API}/`}
+            {name2}
+          </p>
         </Box>
 
         {/* <Box flex="1" className="image">
@@ -32,7 +42,9 @@ export const QrCard: React.FC <itemProps >= ({name2}) => {
         <Box flex="1" className="edit">
           <Stack direction="row" spacing={2}>
             <Button colorScheme="blue">edit</Button>
-            <Button colorScheme="blue">delete</Button>
+            <Button onClick={handleDelete} colorScheme="blue">
+              delete
+            </Button>
           </Stack>
         </Box>
       </Flex>
