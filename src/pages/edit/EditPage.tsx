@@ -1,4 +1,4 @@
-import React ,{} from "react";
+import React from "react";
 import { QrCards } from "../../component";
 
 export const EditPage: React.FC = () => {
