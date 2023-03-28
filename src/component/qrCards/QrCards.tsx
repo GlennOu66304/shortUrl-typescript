@@ -1,17 +1,24 @@
 import React, { useEffect } from "react";
-
+import { Box, Stack, Button } from "@chakra-ui/react";
 import { QrCard } from "../qrCard/QrCard";
 import { fetchAsyncData } from "../../reduex/reducers/action.js";
+import { removeShortUrl, openModal, closeModal } from "../../reduex";
 import { useDispatch, useSelector } from "react-redux";
 export const QrCards: React.FC = () => {
-  const { loading, shortUrlList, error } = useSelector(
+  const { loading, shortUrlList, error, isOpen } = useSelector(
     (state: any) => state.shortUrl
   );
   const dispatch = useDispatch();
-
+  const handleEdit = (name2) => {
+    console.log(name2, isOpen, openModal());
+    dispatch(openModal(name2));
+  };
+  const handleDelete = (name2) => {
+    dispatch(removeShortUrl(name2));
+  };
   useEffect(() => {
     dispatch(fetchAsyncData());
-  },[dispatch]);
+  }, [dispatch]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -23,12 +30,32 @@ export const QrCards: React.FC = () => {
 
   return (
     <div className="QrCards">
-    
-      {/* code block here can update the content here */}
       <div>
         {shortUrlList ? (
           shortUrlList.map((item, index) => {
-            return <QrCard name2={item.shortId} key={index} />;
+            return (
+              <div key={index}>
+                <QrCard name2={item.shortId} />;{/* edit and delete button */}
+                <Box flex="1" className="edit">
+                  <Stack direction="row" spacing={2}>
+                    <Button
+                      colorScheme="blue"
+                      onClick={() => handleEdit(item.shortId)}
+                    >
+                      edit
+                    </Button>
+                    <Button
+                      onClick={() => handleDelete(item.shortId)}
+                      colorScheme="blue"
+                    >
+                      delete
+                    </Button>
+                  </Stack>
+                </Box>
+
+                {/* Modal Area */}
+              </div>
+            );
           })
         ) : (
           <div>loading</div>

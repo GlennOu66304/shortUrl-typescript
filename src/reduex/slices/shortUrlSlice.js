@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAsyncData,removeShortUrl} from "./action";
+import { fetchAsyncData, removeShortUrl } from "../reducers";
 const extraReducer1 = (builder) => {
   builder
     .addCase(fetchAsyncData.pending, (state) => {
@@ -21,7 +21,8 @@ const extraReducer2 = (builder) => {
     })
     .addCase(removeShortUrl.fulfilled, (state, action) => {
       state.loading = false;
-      state.shortUrlList = action.payload;
+      // const updatedData = fetchAsyncData();
+      // state.shortUrlList = updatedData;
     })
     .addCase(removeShortUrl.rejected, (state, action) => {
       state.loading = false;
@@ -34,14 +35,25 @@ const shortUrlSlice = createSlice({
   initialState: {
     shortUrlList: null,
     loading: false,
+    isOpen: false,
+    selectedItemId: null,
   },
-  reducers: {},
-  extraReducers: (builder) => {
-    extraReducer1(builder)
-    extraReducer2(builder)
 
+  reducers: {
+    openModal: (state, action) => {
+      state.isOpen = true;
+      state.selectedItemId = action.payload;
+    },
+    closeModal: (state) => {
+      state.isOpen = false;
+    },
+  },
+
+  extraReducers: (builder) => {
+    extraReducer1(builder);
+    extraReducer2(builder);
   },
 });
 
-export const { loadShortUrlList } = shortUrlSlice.actions;
+export const { openModal, closeModal } = shortUrlSlice.actions;
 export default shortUrlSlice.reducer;
