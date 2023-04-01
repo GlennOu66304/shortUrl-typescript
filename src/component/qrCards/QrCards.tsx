@@ -2,16 +2,17 @@ import React, { useEffect } from "react";
 import { Box, Stack, Button } from "@chakra-ui/react";
 import { QrCard } from "../qrCard/QrCard";
 import { fetchAsyncData } from "../../reduex/reducers/action.js";
-import { removeShortUrl, openModal, closeModal } from "../../reduex";
+import { removeShortUrl, dispatchBothActions } from "../../reduex";
 import { useDispatch, useSelector } from "react-redux";
+import styles from "./QrCards.module.css";
+import { Modal2 } from "../../component";
 export const QrCards: React.FC = () => {
-  const { loading, shortUrlList, error, isOpen } = useSelector(
+  const { loading, shortUrlList, error} = useSelector(
     (state: any) => state.shortUrl
   );
   const dispatch = useDispatch();
   const handleEdit = (name2) => {
-    console.log(name2, isOpen, openModal());
-    dispatch(openModal(name2));
+    dispatch(dispatchBothActions(name2));
   };
   const handleDelete = (name2) => {
     dispatch(removeShortUrl(name2));
@@ -34,9 +35,11 @@ export const QrCards: React.FC = () => {
         {shortUrlList ? (
           shortUrlList.map((item, index) => {
             return (
-              <div key={index}>
-                <QrCard name2={item.shortId} />;{/* edit and delete button */}
-                <Box flex="1" className="edit">
+              <div className={styles["container"]} key={index}>
+                <Modal2 name2={item.shortId} />
+                <QrCard name2={item.shortId} />
+                {/* edit and delete button */}
+                <Box flex="1" className={styles["edit"]}>
                   <Stack direction="row" spacing={2}>
                     <Button
                       colorScheme="blue"
@@ -52,8 +55,6 @@ export const QrCards: React.FC = () => {
                     </Button>
                   </Stack>
                 </Box>
-
-                {/* Modal Area */}
               </div>
             );
           })

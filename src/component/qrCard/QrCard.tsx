@@ -42,7 +42,7 @@ export const QrCard: React.FC<itemProps> = ({ name2 }) => {
   // };
 
   return (
-    <div className={styles["Card"]}>
+    <div className={styles["card"]}>
       {/* write a pop up window when you cick the edit button */}
 
       {/* qr code details */}

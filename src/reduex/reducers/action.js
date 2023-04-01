@@ -18,3 +18,14 @@ export const removeShortUrl = createAsyncThunk(
     return response.data;
   }
 );
+
+export const loadShortUrl = createAsyncThunk(
+  "data/loadShortUrl",
+  async (id, thunkApi) => {
+    // console.log(id);
+    const response = await axios.get(
+      `${process.env.REACT_APP_API}/api/edit/${id}`
+    );  
+    return response.data;
+  }
+);
