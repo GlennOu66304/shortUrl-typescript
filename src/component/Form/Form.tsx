@@ -23,7 +23,7 @@ export const Form: React.FC = () => {
   const [shortenButton, setShortenButton] = useState("ShortenLink");
   const textRef = useRef(null);
   const [showAlert, setShowAlert] = useState(false);
-
+  const [value2, setValue2] = useState("");
   const handleChange = (event: any) => setLongUrl(event.target.value);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -52,6 +52,11 @@ export const Form: React.FC = () => {
     setTimeout(() => {
       setShowAlert(false);
     }, 500);
+  };
+  const handleClickQr = () => {
+    console.log("qr code");
+    const url = process.env.REACT_APP_API;
+    setValue2(`${url} + "/" + ${shortId}`);
   };
 
   return (
@@ -96,20 +101,16 @@ export const Form: React.FC = () => {
               COPY
             </Button>
             {/* qr code generator button */}
-            <Button
-              onClick={handleClickCopy}
-              type="submit"
-              colorScheme={"green"}
-            >
+            <Button onClick={handleClickQr} type="submit" colorScheme={"green"}>
               QR Code
             </Button>
           </HStack>
         </Box>
       )}
-      {shortId && (
+      {value2 && (
         <div className={styles["qr"]}>
           <Center h="30vh" justifyContent="center">
-            <Qr shortID2={shortId} />
+            <Qr qrValue={value2} shortID2={shortId} />
           </Center>
         </div>
       )}

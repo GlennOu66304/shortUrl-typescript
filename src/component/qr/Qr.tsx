@@ -5,9 +5,10 @@ import { Button } from "@chakra-ui/react";
 // import canvas from "canvas";
 const btoa = window.btoa;
 interface QrProps {
+  qrValue: string;
   shortID2: string;
 }
-export const Qr: React.FC<QrProps> = ({ shortID2 }) => {
+export const Qr: React.FC<QrProps> = ({ qrValue, shortID2 }) => {
   const svgRef = useRef(null);
   const downloadQr = (svg) => {
     const canvas = document.createElement("canvas");
@@ -30,7 +31,7 @@ export const Qr: React.FC<QrProps> = ({ shortID2 }) => {
 
     img.src = "data:image/svg+xml;base64," + btoa(svgData);
   };
-  const url = process.env.REACT_APP_API;
+
   return (
     <div className="Qr">
       <div className={styles["qrcode"]}>
@@ -38,7 +39,7 @@ export const Qr: React.FC<QrProps> = ({ shortID2 }) => {
           ref={svgRef}
           size={256}
           style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-          value={url + "/" + shortID2}
+          value={qrValue}
           viewBox={`0 0 256 256`}
         />
       </div>
