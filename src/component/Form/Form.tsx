@@ -24,7 +24,13 @@ export const Form: React.FC = () => {
   const textRef = useRef(null);
   const [showAlert, setShowAlert] = useState(false);
   const [value2, setValue2] = useState("");
-  const handleChange = (event: any) => setLongUrl(event.target.value);
+  const handleChange = (event: any) => {
+    if (longUrl === "") {
+      setShortenButton("ShortenLink");
+    }
+    setLongUrl(event.target.value);
+
+  };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
