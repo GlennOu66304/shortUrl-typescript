@@ -1,15 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Box, Stack, Button } from "@chakra-ui/react";
 import { QrCard } from "../qrCard/QrCard";
-import { fetchAsyncData } from "../../reduex/reducers/action.js";
+
 import { removeShortUrl, dispatchBothActions } from "../../reduex";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./QrCards.module.css";
 import { Modal2 } from "../../component";
 export const QrCards: React.FC = () => {
-  const { loading, shortUrlList, error} = useSelector(
-    (state: any) => state.shortUrl
-  );
+  const { shortUrlList } = useSelector((state: any) => state.shortUrl);
   const dispatch = useDispatch();
   const handleEdit = (name2) => {
     dispatch(dispatchBothActions(name2));
@@ -17,17 +15,6 @@ export const QrCards: React.FC = () => {
   const handleDelete = (name2) => {
     dispatch(removeShortUrl(name2));
   };
-  useEffect(() => {
-    dispatch(fetchAsyncData());
-  }, [dispatch]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <div className="QrCards">

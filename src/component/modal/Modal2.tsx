@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 // import styles from "./Modal.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal} from "../../reduex";
+import { closeModal, dispatchBothActions2 } from "../../reduex";
 import {
   Modal,
   ModalOverlay,
@@ -18,15 +18,19 @@ interface itemProps {
 
 export const Modal2: React.FC<itemProps> = ({ name2 }) => {
   const dispatch = useDispatch();
-  const { isOpen,longUrl } = useSelector((state: any) => state.shortUrl);
+
+  const { isOpen, longUrl } = useSelector((state: any) => state.shortUrl);
+  const [targetShortUrl, setTargetShortUrl] = useState<string>(longUrl);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
+    setTargetShortUrl(event.target.value);
   };
   const handleCancel = () => {
     dispatch(closeModal());
   };
   const handleSave = () => {
-    dispatch(closeModal());
+    const requestData = { name2, targetShortUrl };
+    dispatch(dispatchBothActions2(requestData));
   };
 
   return (
@@ -44,7 +48,7 @@ export const Modal2: React.FC<itemProps> = ({ name2 }) => {
 
           <ModalBody>
             <Input
-              value={longUrl}
+              value={targetShortUrl}
               onChange={handleChange}
               placeholder="put your link here"
               size="lg"

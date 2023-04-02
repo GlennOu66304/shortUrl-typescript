@@ -14,7 +14,7 @@ export const removeShortUrl = createAsyncThunk(
     console.log(id);
     const response = await axios.delete(
       `${process.env.REACT_APP_API}/api/edit/${id}`
-    );  
+    );
     return response.data;
   }
 );
@@ -25,7 +25,24 @@ export const loadShortUrl = createAsyncThunk(
     // console.log(id);
     const response = await axios.get(
       `${process.env.REACT_APP_API}/api/edit/${id}`
-    );  
+    );
+    return response.data;
+  }
+);
+
+// q:redux-toolkit-createasyncthunk-with-request-body-parameters
+// a:
+
+export const updateShortUrl = createAsyncThunk(
+  "data/updateShortUrl",
+  async (item, thunkApi) => {
+    console.log(item);
+    const response = await axios.put(
+      `${process.env.REACT_APP_API}/api/edit/${item.name2}`,
+      {
+        longUrl: item.targetShortUrl,
+      }
+    );
     return response.data;
   }
 );
