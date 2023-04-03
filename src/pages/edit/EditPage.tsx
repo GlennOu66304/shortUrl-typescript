@@ -4,9 +4,7 @@ import { QrCards } from "../../component";
 import { fetchAsyncData } from "../../reduex/reducers/action.js";
 
 export const EditPage: React.FC = () => {
-  const { loading,error } = useSelector(
-    (state: any) => state.shortUrl
-  );
+  const { loading, error } = useSelector((state: any) => state.shortUrl);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAsyncData());
@@ -18,9 +16,5 @@ export const EditPage: React.FC = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  return (
-    <div className="QrCard">
-      <QrCards />
-    </div>
-  );
+  return <QrCards />;
 };
