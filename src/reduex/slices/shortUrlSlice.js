@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
+
 import {
   fetchAsyncData,
   removeShortUrl,
@@ -80,6 +81,13 @@ const shortUrlSlice = createSlice({
     openModal: (state, action) => {
       state.isOpen = true;
       state.selectedItemId = action.payload;
+    
+    },
+    longUrlChange: (state, action) => {
+      state.longUrl = action.payload;
+    },
+    longUrlInputChange: (state, action) => {
+      state.longUrl = action.payload;
     },
     closeModal: (state) => {
       state.isOpen = false;
@@ -94,11 +102,7 @@ const shortUrlSlice = createSlice({
   },
 });
 
-export const { openModal, closeModal } = shortUrlSlice.actions;
-export const dispatchBothActions = (id) => (dispatch) => {
-  dispatch(openModal(id));
-  dispatch(loadShortUrl(id));
-};
+export const { openModal, closeModal,longUrlChange, longUrlInputChange } = shortUrlSlice.actions;
 
 export const dispatchBothActions2 = (id) => (dispatch) => {
   dispatch(closeModal());

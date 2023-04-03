@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 // import styles from "./Modal.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal, dispatchBothActions2 } from "../../reduex";
+import {
+  closeModal,
+  dispatchBothActions2,
+  longUrlInputChange,
+} from "../../reduex";
 import {
   Modal,
   ModalOverlay,
@@ -13,23 +17,30 @@ import {
   Input,
 } from "@chakra-ui/react";
 interface itemProps {
-  name2: string;
+  name3: string;
+
+  longUrl2: string;
 }
 
-export const Modal2: React.FC<itemProps> = ({ name2 }) => {
+export const Modal2: React.FC<itemProps> = ({
+  name3,
+
+  longUrl2,
+}) => {
   const dispatch = useDispatch();
 
-  const { isOpen, longUrl } = useSelector((state: any) => state.shortUrl);
-  const [targetShortUrl, setTargetShortUrl] = useState<string>(longUrl);
+  const { isOpen, longUrl,selectedItemId } = useSelector((state: any) => state.shortUrl);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTargetShortUrl(event.target.value);
+    // console.log(event.target.value);
+    dispatch(longUrlInputChange(event.target.value));
   };
   const handleCancel = () => {
     dispatch(closeModal());
   };
   const handleSave = () => {
-    const requestData = { name2, targetShortUrl };
+    const requestData = { selectedItemId, longUrl };
+    console.log(requestData);
     dispatch(dispatchBothActions2(requestData));
   };
 
@@ -48,7 +59,7 @@ export const Modal2: React.FC<itemProps> = ({ name2 }) => {
 
           <ModalBody>
             <Input
-              value={targetShortUrl}
+              value={longUrl2}
               onChange={handleChange}
               placeholder="put your link here"
               size="lg"

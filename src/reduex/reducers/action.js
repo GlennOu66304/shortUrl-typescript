@@ -4,6 +4,7 @@ export const fetchAsyncData = createAsyncThunk(
   "data/fetchAsyncData",
   async () => {
     const response = await axios.get(`${process.env.REACT_APP_API}/api/list`);
+
     return response.data;
   }
 );
@@ -38,9 +39,9 @@ export const updateShortUrl = createAsyncThunk(
   async (item, thunkApi) => {
     console.log(item);
     const response = await axios.put(
-      `${process.env.REACT_APP_API}/api/edit/${item.name2}`,
+      `${process.env.REACT_APP_API}/api/edit/${item.selectedItemId}`,
       {
-        longUrl: item.targetShortUrl,
+        longUrl: item.longUrl,
       }
     );
     return response.data;
