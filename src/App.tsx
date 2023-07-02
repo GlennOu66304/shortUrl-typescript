@@ -1,15 +1,24 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { HomePage, EditPage, NotFound } from "./pages";
+import { HomePage, EditPage, Register, Login, NotFound } from "./pages";
 
+import ProtectedRoute from "./protectedRoute";
 function App() {
+
   return (
     <Router>
       <Routes>
-        <Route path="/" Component={HomePage} />
-        <Route path="/edit" Component={EditPage} />
-        <Route path="*" Component={NotFound} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
+
+        <Route
+          path="/edit"
+          element={<ProtectedRoute element={<EditPage />} />}
+        />
       </Routes>
+
     </Router>
   );
 }
