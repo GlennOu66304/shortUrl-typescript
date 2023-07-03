@@ -58,37 +58,32 @@ export const Register: React.FC = () => {
         {isError && <div>{errorMessage}</div>}
         <form onSubmit={handleSubmit}>
           <VStack spacing={4}>
-            <FormControl id="name" isRequired>
+          <FormControl id="name" isRequired>
               <FormLabel>Name</FormLabel>
               <Input type="text" value={username} onChange={handleNameChange} />
             </FormControl>
-
+          
             <FormControl id="email" isRequired>
               <FormLabel>Email</FormLabel>
               <Input type="email" value={email} onChange={handleEmailChange} />
             </FormControl>
 
-            <FormControl id="password" isRequired>
+           <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <Input
                 type="password"
                 value={password}
                 onChange={handlePasswordChange}
               />
-            </FormControl>
-            
-            {/* <FormControl id="password" isRequired>
-              <FormLabel>Confirm Password</FormLabel>
-              <Input
-                type="password"
-                value={password}
-                onChange={handlePasswordChange}
-              />
-            </FormControl> */}
+            </FormControl> 
 
-            <Button type="submit" colorScheme="blue" isLoading={isLoading}>
+
+
+          <Button type="submit" colorScheme="blue" isLoading={isLoading}>
               Register
             </Button>
+
+
           </VStack>
         </form>
       </Box>

@@ -1,4 +1,14 @@
 
+## Vercel deploy issue fix:
+```
+git rm -r --cached .
+git add --all .
+git commit -am "Fix casing discrepancies."
+git push origin branch_name
+```
+[[Title](Error:%2520Can%2527t%2520resolve%2520%2527remark%2527%2520in%2520%2527/vercel/workpath0/lib%2527%2520)]([Title](https://github.com/vercel/next.js/discussions/18176))
+
+
 TEST
 ## dot env can only been used in the node express side, do not use it in client side, inlude react, nextjs, vue
 

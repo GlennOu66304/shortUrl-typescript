@@ -61,7 +61,7 @@ export const Login: React.FC = () => {
               />
             </FormControl>
 
-            <Button type="submit" colorScheme="blue" isLoading={isLoading}>
+            <Button  type="submit" colorScheme="blue" isLoading={isLoading}>
               Login
             </Button>
           </VStack>

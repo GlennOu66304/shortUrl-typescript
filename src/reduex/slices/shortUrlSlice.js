@@ -70,11 +70,11 @@ const extraReducer4 = (builder) => {
 const shortUrlSlice = createSlice({
   name: "shortUrl",
   initialState: {
-    shortUrlList: null,
+    shortUrlList: [],
     loading: false,
     isOpen: false,
-    selectedItemId: null,
-    longUrl: null,
+    selectedItemId: "",
+    longUrl: "",
   },
 
   reducers: {

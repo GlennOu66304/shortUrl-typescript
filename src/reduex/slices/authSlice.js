@@ -8,8 +8,8 @@ const extraReducer1 = (builder) => {
     })
     .addCase(registerAccount.fulfilled, (state, action) => {
       state.loading = false;
-      state.username = action.payload.username;
-      state.email = action.payload.email;
+      state.username = "";
+      state.email = "";
       state.password = "";
       state.isAuthenticated = true;
     })
@@ -26,7 +26,7 @@ const extraReducer2 = (builder) => {
     })
     .addCase(loginAccount.fulfilled, (state, action) => {
       state.loading = false;
-      state.email = action.payload.email;
+      state.email = "";
       state.password = "";
       state.isAuthenticated = true;
     })
@@ -58,6 +58,10 @@ const authSlice = createSlice({
     setPassword: (state, action) => {
       state.password = action.payload;
     },
+    setAuthentication: (state, action) => {
+      state.isAuthenticated = action.payload;
+    },
+
     setLoading: (state, action) => {
       state.isLoading = action.payload;
     },
@@ -92,6 +96,7 @@ export const {
   setSuccess,
   setError,
   resetState,
+  setAuthentication
 } = authSlice.actions;
 
 export default authSlice.reducer;
