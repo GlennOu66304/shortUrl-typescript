@@ -9,7 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export const EditPage: React.FC = () => {
- 
+
   const { loading, error } = useSelector((state: any) => state.shortUrl);
   const dispatch = useDispatch();
   const navigator = useNavigate()
@@ -18,8 +18,18 @@ export const EditPage: React.FC = () => {
     dispatch(setAuthentication(false))
     navigator('/login')
   }
+
+
   useEffect(() => {
-    dispatch(fetchAsyncData());
+    // Retrieve token from local storage
+    const token = localStorage.getItem('token');
+    // Set initial authentication state
+
+    if (token) {
+    
+      dispatch(fetchAsyncData());
+    }
+
   }, [dispatch]);
   if (loading) {
     return <div>Loading...</div>;

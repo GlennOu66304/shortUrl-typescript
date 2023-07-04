@@ -17,6 +17,7 @@ export const registerAccount = createAsyncThunk(
     const token2 = response.data.token;
 
     localStorage.setItem("token", token2);
+ 
     return response.data;
     
   }

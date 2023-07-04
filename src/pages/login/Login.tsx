@@ -26,7 +26,7 @@ export const Login: React.FC = () => {
     errorMessage,
   } = useSelector((state: any) => state.auth);
   const dispatch = useDispatch();
-  const navgitate = useNavigate()
+  const navigate = useNavigate();
   const handleEmailChange = (event) => {
     dispatch(setEmail(event.target.value));
   };
@@ -35,10 +35,18 @@ export const Login: React.FC = () => {
     dispatch(setPassword(event.target.value));
   };
   const handleSubmit = (event) => {
+
     event.preventDefault();
-    dispatch(loginAccount({  email, password }));
-    navgitate('/edit')
+    dispatch(loginAccount({ email, password }));
+   
+    
+
   };
+  if (localStorage.getItem('token')) {
+    navigate('/edit')
+
+  }
+
   return (
     <div className={styles["home"]}>
       <h2>This is the login page</h2>
@@ -61,7 +69,7 @@ export const Login: React.FC = () => {
               />
             </FormControl>
 
-            <Button  type="submit" colorScheme="blue" isLoading={isLoading}>
+            <Button type="submit" colorScheme="blue" isLoading={isLoading}>
               Login
             </Button>
           </VStack>
