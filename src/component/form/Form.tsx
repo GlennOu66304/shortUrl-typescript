@@ -17,6 +17,11 @@ import React, { useState, useRef } from "react";
 import styles from "./Form.module.css";
 import axios from "axios";
 // import { Qr } from "../../component";
+// interface formProps {
+//   id: string;
+//   // Other prop definitions
+// }
+import { useSelector } from "react-redux";
 export const Form: React.FC = () => {
   const [longUrl, setLongUrl] = useState("");
   const [shortId, setShortId] = useState("");
@@ -24,6 +29,9 @@ export const Form: React.FC = () => {
   const textRef = useRef(null);
   const [showAlert, setShowAlert] = useState(false);
   const [value2, setValue2] = useState("");
+  const userId = localStorage.getItem('userId')
+  // console.log(userId)
+
   const handleChange = (event: any) => {
     if (longUrl === "") {
       setShortenButton("ShortenLink");
@@ -33,12 +41,15 @@ export const Form: React.FC = () => {
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     try {
       if (shortenButton === "Clear") {
         setLongUrl("");
       }
       if (longUrl != null || "") {
+
         const result = await axios.post(`${process.env.REACT_APP_API}`, {
+          userId,
           longUrl,
         });
 

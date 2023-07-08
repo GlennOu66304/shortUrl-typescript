@@ -17,7 +17,7 @@ export const registerAccount = createAsyncThunk(
     const token2 = response.data.token;
 
     localStorage.setItem("token", token2);
- 
+  
     return response.data;
     
   }
@@ -36,9 +36,10 @@ export const loginAccount = createAsyncThunk(
       }
     );
     const token2 = response.data.token;
-
+    const user = response.data.user
     localStorage.setItem("token", token2);
-    return response.data;
+    localStorage.setItem("userId", user._id);
+    return user;
     
   }
 );

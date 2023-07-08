@@ -27,6 +27,7 @@ export const Login: React.FC = () => {
   } = useSelector((state: any) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleEmailChange = (event) => {
     dispatch(setEmail(event.target.value));
   };
@@ -35,16 +36,14 @@ export const Login: React.FC = () => {
     dispatch(setPassword(event.target.value));
   };
   const handleSubmit = (event) => {
-
     event.preventDefault();
     dispatch(loginAccount({ email, password }));
-   
-    
+
 
   };
-  if (localStorage.getItem('token')) {
-    navigate('/edit')
 
+  if (localStorage.getItem('token')) {
+    navigate("/")
   }
 
   return (

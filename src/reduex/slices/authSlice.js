@@ -26,9 +26,12 @@ const extraReducer2 = (builder) => {
     })
     .addCase(loginAccount.fulfilled, (state, action) => {
       state.loading = false;
-      state.email = "";
+      state.userId=action.payload._id
+      state.username=action.payload.username
+      state.email = action.payload.email;
       state.password = "";
       state.isAuthenticated = true;
+      
     })
     .addCase(loginAccount.rejected, (state, action) => {
       state.loading = false;
@@ -38,6 +41,7 @@ const extraReducer2 = (builder) => {
 const authSlice = createSlice({
   name: "authentication",
   initialState: {
+    userId:"",
     username: "",
     email: "",
     password: "",

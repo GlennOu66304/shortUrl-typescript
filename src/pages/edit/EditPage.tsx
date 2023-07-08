@@ -26,7 +26,7 @@ export const EditPage: React.FC = () => {
     // Set initial authentication state
 
     if (token) {
-    
+
       dispatch(fetchAsyncData());
     }
 
