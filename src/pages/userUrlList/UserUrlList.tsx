@@ -15,8 +15,8 @@ import { useNavigate } from "react-router-dom";
 
 export const UserUrlList: React.FC = () => {
   const { userId } = useParams()
-  const userUrlList  = useSelector((state: any) => state.user.userUrlList)
-  console.log(userUrlList)
+  const userUrlList = useSelector((state: any) => state.user.userUrlList)
+  // console.log(userUrlList)
   const dispatch = useDispatch();
   const navigator = useNavigate()
   const handleLogOut = () => {
