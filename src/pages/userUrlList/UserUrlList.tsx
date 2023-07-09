@@ -30,8 +30,8 @@ export const UserUrlList: React.FC = () => {
     if (userId) {
       dispatch(fetchUserShortUrl(userId))
     }
-    return
-  }, [dispatch]); // Dependency array
+
+  }); // Dependency array
 
   return (
     <div>
