@@ -2,22 +2,35 @@
   text-align: center;
   /* background-color: black; */
 }
+
 .header {
-  margin-top: 20px;
-  display: inline-block;
-  width: 200px;
-  height: 50px;
-  /* background-color:blue; */
+  /* margin-top: 20px; */
+  /* display: flex; */
+  /* width: 200px;
+  height: 50px; */
+  /* background-color: aqua; */
 }
+
+.generate {
+  /* font-weight: bald;
+  align-items: center;
+  background-color: rgb(0, 255, 51); */
+}
+
 .block {
-  margin-bottom: 15px;
+
+  display: flex;
+  align-items: center;
 }
-#generate {
-  font-weight: bald;
+
+.text {
+  margin-right: auto;
 }
-#edit {
-  text-decoration: underline;
+
+.button {
+  margin-right: auto;
 }
+
 .form {
   margin-top: 150px;
   padding-top: 5px;

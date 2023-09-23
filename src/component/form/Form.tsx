@@ -41,7 +41,11 @@ export const Form: React.FC = () => {
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  //  when you submit the data into the form, will check if there is token
+  // in the local storage, if not, will redirect to the login page
+    if (!userId) {
+      window.location.href = "/login";
+    }
     try {
       if (shortenButton === "Clear") {
         setLongUrl("");

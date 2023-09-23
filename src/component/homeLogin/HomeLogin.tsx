@@ -4,7 +4,7 @@ import { Center } from "@chakra-ui/react";
 import { Form } from "../form/Form";
 import { useNavigate } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+
 
 
 export const HomeLogin: React.FC = () => {
@@ -19,10 +19,9 @@ export const HomeLogin: React.FC = () => {
   return (
     <div className={styles["home"]}>
       <div className={styles["header"]}>
-        <div id={styles["generate"]} className={styles["block"]}>
-          <strong>This is Home login</strong>
-        </div>
-
+       
+       
+        
         <div
           id={styles["edit"]}
           onClick={handleClickEdit}

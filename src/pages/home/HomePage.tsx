@@ -1,6 +1,6 @@
 import React from "react";
 // import styles from "./homePage.module.css";
-import { HomeLogin, HomeNoLogin } from "../../component";
+import { HomeLogin, HomeNoLogin,Header } from "../../component";
 
 
 export const HomePage: React.FC = () => {
@@ -8,6 +8,19 @@ export const HomePage: React.FC = () => {
 
   const token = localStorage.getItem('token');
 
-  return token ? <HomeLogin /> : <HomeNoLogin />
+  return (
+    <div>
+<Header />
+      {
+        token ? <HomeLogin /> : <HomeNoLogin />
+
+      }
+
+    </div>
+
+
+  )
+
+
 
 };

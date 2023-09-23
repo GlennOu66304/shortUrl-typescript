@@ -53,35 +53,43 @@ export const Register: React.FC = () => {
 
   return (
     <div className={styles["home"]}>
-      <h2>Register an Account </h2>
+      <h2 className="font-bald text-2xl">Register an Account </h2>
       <Box maxW="md" mx="auto" mt={8}>
         {isError && <div>{errorMessage}</div>}
         <form onSubmit={handleSubmit}>
           <VStack spacing={4}>
-          <FormControl id="name" isRequired>
+            <FormControl id="name" isRequired>
               <FormLabel>Name</FormLabel>
               <Input type="text" value={username} onChange={handleNameChange} />
             </FormControl>
-          
+
             <FormControl id="email" isRequired>
               <FormLabel>Email</FormLabel>
               <Input type="email" value={email} onChange={handleEmailChange} />
             </FormControl>
 
-           <FormControl id="password" isRequired>
+            <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <Input
                 type="password"
                 value={password}
                 onChange={handlePasswordChange}
               />
-            </FormControl> 
+            </FormControl>
 
 
+            <div className="flex space-x-4">
+              <Button type="submit" colorScheme="blue" isLoading={isLoading}>
+                Register
+              </Button>
 
-          <Button type="submit" colorScheme="blue" isLoading={isLoading}>
-              Register
-            </Button>
+              <Button colorScheme="blue" isLoading={isLoading} onClick={() => {
+                navgitate('/login')
+              }}>
+                Login
+              </Button>
+
+            </div>
 
 
           </VStack>

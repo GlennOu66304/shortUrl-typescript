@@ -42,13 +42,17 @@ export const Login: React.FC = () => {
 
   };
 
+  const handleClickSignup = () => {
+    navigate("/register")
+  }
+
   if (localStorage.getItem('token')) {
     navigate("/")
   }
 
   return (
     <div className={styles["home"]}>
-      <h2>This is the login page</h2>
+      <h2 className="font-bald text-2xl">This is the login page</h2>
 
       <Box maxW="md" mx="auto" mt={8}>
         {isError && <div>{errorMessage}</div>}
@@ -68,9 +72,15 @@ export const Login: React.FC = () => {
               />
             </FormControl>
 
-            <Button type="submit" colorScheme="blue" isLoading={isLoading}>
-              Login
-            </Button>
+            <div className="flex space-x-4">
+              <Button type="submit" colorScheme="blue" isLoading={isLoading}>
+                Login
+              </Button>
+              <Button  colorScheme="blue" isLoading={isLoading} onClick={handleClickSignup}>
+                SignUp
+              </Button>
+            </div>
+
           </VStack>
         </form>
       </Box>
