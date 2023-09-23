@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { setAuthentication } from "../../reduex/slices";
+import { setAuthentication,setUserUrlList} from "../../reduex/slices";
 import { Button } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 
@@ -17,6 +17,7 @@ export const Header: React.FC = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     dispatch(setAuthentication(false));
+    dispatch(setUserUrlList([]));
     navigator("/login" as const);
   };
 

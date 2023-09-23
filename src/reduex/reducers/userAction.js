@@ -1,8 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+
 export const fetchUserShortUrl = createAsyncThunk(
   "data/fetchUserShortUrl",
   async (userId) => {
+  
     const response = await axios.get(`${process.env.REACT_APP_API}/user/${userId}/shorturls`);
     return response.data;
   }

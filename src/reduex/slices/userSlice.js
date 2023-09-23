@@ -29,19 +29,20 @@ const userSlice = createSlice({
   },
 
   reducers: {
-    // setName: (state, action) => {
-    //   state.username = action.payload;
-    // },
-
+  setUserUrlList:(state,action)=>{
+    state.userUrlList=action.payload
+  }
 
   },
   extraReducers: (builder) => {
     extraReducer1(builder);
+
   },
 });
 
-// export const {
+export const {
+  setUserUrlList
 
-// } = authSlice.actions;
+} = userSlice.actions;
 
 export default userSlice.reducer;

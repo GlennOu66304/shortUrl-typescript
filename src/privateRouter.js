@@ -16,5 +16,5 @@ export const PrivateRoute = () => {
     dispatch(setAuthentication(true));
   }
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />
+  return isAuthenticated ? <Outlet /> : <Navigate to="/" />
 };

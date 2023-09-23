@@ -13,11 +13,11 @@ function App() {
       {/* <Header/> */}
       <Routes>
 
-        {/* <Route path="/:userId/shorturllist" element={<PrivateRoute />}>
-          <Route path="/:userId/shorturllist" element={<UserUrlList  />} />
-        </Route> */}
+        <Route path="/:userId/shorturllist" element={<PrivateRoute />}>
+          <Route path="/:userId/shorturllist" element={<UserUrlList />} />
+        </Route>
 
-        <Route path="/:userId/shorturllist" element={<UserUrlList />} />
+        {/* <Route path="/:userId/shorturllist" element={<UserUrlList />} /> */}
         <Route path="/edit" element={<PrivateRoute />}>
           <Route path="/edit" element={<EditPage />} />
         </Route>

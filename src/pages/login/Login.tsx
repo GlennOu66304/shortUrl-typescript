@@ -14,7 +14,7 @@ import {
   setPassword,
 } from "../../reduex/slices/authSlice.js";
 import { loginAccount } from "../../reduex";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,NavLink } from 'react-router-dom';
 export const Login: React.FC = () => {
   const {
 
@@ -52,7 +52,7 @@ export const Login: React.FC = () => {
 
   return (
     <div className={styles["home"]}>
-      <h2 className="font-bald text-2xl">This is the login page</h2>
+     <NavLink to = '/'>ShortUrl System</NavLink>
 
       <Box maxW="md" mx="auto" mt={8}>
         {isError && <div>{errorMessage}</div>}
