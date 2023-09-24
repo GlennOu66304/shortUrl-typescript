@@ -37,7 +37,6 @@ export const UserUrlList: React.FC = () => {
       {/* here is the area of the short url list */}
 
       <div>
-        <h1>This is the {userId} userUrlList Page</h1>
         {userUrlList ? (
 
           userUrlList.map((item, index) => {

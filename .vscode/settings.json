@@ -1,0 +1,5 @@
+{
+    "terminal.explorerKind": "integrated",
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "terminal.integrated.defaultProfile.linux": ""
+}
